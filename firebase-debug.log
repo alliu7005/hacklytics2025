@@ -1,0 +1,21 @@
+[debug] [2025-02-22T09:23:16.569Z] ----------------------------------------------------------------------
+[debug] [2025-02-22T09:23:16.578Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\aymli\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2025-02-22T09:23:16.580Z] CLI Version:   13.31.2
+[debug] [2025-02-22T09:23:16.581Z] Platform:      win32
+[debug] [2025-02-22T09:23:16.581Z] Node Version:  v20.11.0
+[debug] [2025-02-22T09:23:16.581Z] Time:          Sat Feb 22 2025 04:23:16 GMT-0500 (Eastern Standard Time)
+[debug] [2025-02-22T09:23:16.582Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-02-22T09:23:16.601Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-02-22T09:23:16.603Z] > authorizing via signed-in user (alliu7005@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\aymli\hacklytics2025
+
