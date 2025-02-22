@@ -1,5 +1,5 @@
-import firebase from "firebase/compat/app";
-import "firebase/compat/auth";
+import { initializeApp } from "firebase/app";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDwMMuWrvfHcS0bhQ_VV0PyKf6dcfl7Tr0",  
@@ -11,20 +11,19 @@ const firebaseConfig = {
     measurementId: "G-7WGZN3C31Y"  
 };
 
-firebase.initializeApp(firebaseConfig);
-
-const auth = firebase.auth();
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
 window.onload =  function() {
-    console.log("HEEREE");
+    
     var signUpButton = document.getElementById("signUpButton");
     var signInButton = document.getElementById("signInButton");
 
     signUpButton.addEventListener("click", function() {
-        console.log("HEEREE");
-        var email = document.getElementById("email");
-        var password = document.getElementById("password");
-        auth.createUserWithEmailAndPassword(email.value, password.value).then((userCredential) => {
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        
+        createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
                 var user = userCredential.user;
                 console.log("User Created:", userCredential.user);
                 alert("Success");
@@ -35,18 +34,38 @@ window.onload =  function() {
     });
 
     signInButton.addEventListener("click", function() {
-        console.log("EEEEEE")
-        var email = document.getElementById("email");
-        var password = document.getElementById("password");
-        auth.signInWithEmailAndPassword(email.value, password.value).then(function() {
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        
+        signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
                 var user = userCredential.user;
+                
                 console.log("heeeeees")
-                window.location.href = "index.html";
+                const userId = { "uid": user.uid };
+                var d = JSON.stringify(userId);
+                console.log(JSON.parse(d))
+                fetch("/", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(userId)
+                    
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                })
+                .catch(error => console.error('Error:', error));
+            
             })
             .catch((error) => {
                 console.error("error:", error.message);
             })
+        console.log("EKJNFSKJSKNJF")
+        window.location.href = "/";
     });
+
 }
 
 
