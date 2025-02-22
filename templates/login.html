@@ -1,21 +1,22 @@
-<html>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
-    
-    <body>
-        <div>
-            <div>
-                <label for = "email">Email</label>
-                <input type="email" id="email" required>
-            </div>
-            <div>
-                <label for="password">Password</label>
-                <input type="password" id="password" required>
-            </div>
-            <button id="signInButton">Sign In</button>
-            <button id="signUpButton">Sign Up</button>
-        </div>
-        <script type="text/javascript" src="../static/dist/bundle.js"></script>
-    </body>
+{% extends "base.html" %}
 
-</html>
+{% block content %}
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    
+<body>
+    <div>
+        <div>
+            <label for = "email">Email</label>
+            <input type="email" id="email" required>
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" id="password" required>
+        </div>
+                <button id="signInButton">Sign In</button>
+        <button id="signUpButton">Sign Up</button>
+    </div>
+        <script type="text/javascript" src="../static/dist/bundle.js"></script>
+</body>
+{% endblock %}

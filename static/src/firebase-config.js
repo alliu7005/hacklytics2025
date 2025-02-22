@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDwMMuWrvfHcS0bhQ_VV0PyKf6dcfl7Tr0",  
@@ -62,9 +62,17 @@ window.onload =  function() {
             .catch((error) => {
                 console.error("error:", error.message);
             })
-        console.log("EKJNFSKJSKNJF")
         window.location.href = "/";
     });
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            const uid = user.uid;
+        }
+        else {
+            
+        }
+    })
 
 }
 
