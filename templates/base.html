@@ -1,14 +1,21 @@
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+
+<head>
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
 <body>
     <header class="header">
         <nav class="nav">
-            {% if uid() is not none %}
-            <a href="{{ url_for('logout')}}" class="nav_link">Logout</a>
+            {% if uid is not none %}
+            <a id="logoutButton" href="#" class="nav_link">Logout</a>
             <a href="{{ url_for('index')}}" class="nav_link">Home</a>
             {% else %}
             <a href="{{ url_for('login')}}" class="nav_link">Login</a>
-            <a href="{{ url_for('about')}}" class="nav_link">About</a>
             {% endif %}
+            <a href="{{ url_for('about')}}" class="nav_link">About</a>
         </nav>
+        <script type="text/javascript" src="../static/dist/bundle.js"></script>
     </header>
     {% block content %}
     {% endblock %}

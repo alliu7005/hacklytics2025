@@ -21,7 +21,6 @@ app.config["SESSION_TYPE"] = "filesystem"
 
 Session(app)
 
-
 @app.route('/login')
 def login():
     return render_template('login.html')
@@ -35,14 +34,19 @@ def index():
         session['uid'] = uid
         print(uid)
         return jsonify({})
-    print("here")
     if "uid" not in session:
+        print("uid not in session")
         return redirect('login')
+    print(session['uid'])
     return render_template('index.html')
 
 @app.route('/about')
 def about():
     return render_template('about.html')
+
+@app.route('/loggedin')
+def loggedin():
+    return redirect("/")
 
 @app.route('/logout')
 def logout():
@@ -50,12 +54,15 @@ def logout():
     return redirect('login')
 
 @app.context_processor
-def utility_processor():
-    def uid():
-        if "uid" in session:
-            return dict(uid = session["uid"])
-        else:
-            return dict(uid = None)
+def uid():
+    if "uid" in session:
+        print(session["uid"])
+        return {"uid" : session["uid"]}
+    else:
+        print("none")
+        return {"uid" : None}
+    
+
 
 
 if __name__ == "__main__":
