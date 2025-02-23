@@ -55,6 +55,16 @@ def logout():
 
 @app.route('/results', methods = ['GET', 'POST'])
 def results():
+    if request.method == "POST":
+        employment_sector = None
+        loan_amt = int(request.form.get("loan_amount"))
+        fico = int(request.form.get("fico"))
+        employment = int(request.form.get("employment"))
+        if employment != 0:
+            employment_sector = str(request.form.get("employment_sec"))
+        monthly_gross_income = int(request.form.get("monthly_gross_income"))
+        monthly_housing_payment = int(request.form.get("monthly_housing_payment"))
+        bankrupt_foreclosed = int(request.form.get("bankrupt_foreclosed"))
     return render_template('results.html')
 
 @app.context_processor

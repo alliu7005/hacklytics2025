@@ -29,7 +29,8 @@
             <div class="below">
                 <select onchange="checkVal();" id="employment" required>
                     <option disabled selected value> Select an Option </option>
-                    <option value="1">Employed</option>
+                    <option value="2">Employed</option>
+                    <option value="1">Part Time</option>
                     <option value="0">Unemployed</option>
                 </select>
             </div>
@@ -89,7 +90,7 @@
     
     function checkVal() {
         console.log(select.value);
-        if (select.value == 1) {
+        if (select.value == 1 || select.value == 2) {
             employment_sec.required = true;
         } else {
             employment_sec.required = false;
