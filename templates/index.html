@@ -2,11 +2,100 @@
 
 {% block content %}
 <body>
-<form>
+<div class = "container">
+    <form method = "POST" action="/results">
+        <div class="form_question">
+            <div class="above">
+                <label for="loan_amount">Loan Amount</label>
+            </div>
+            <div class="below">
+                <input type="number" id="loan_amount" required>
+            </div>
+        </div>
+
+        <div class="form_question">
+            <div class="above">
+                <label for="fico">FICO Score</label>
+            </div>
+            <div class="below">
+                <input type="number" id="fico" required>
+            </div>
+        </div>
+
+        <div class="form_question">
+            <div class="above">
+                <label for="employment">Employment Status</label>
+            </div>
+            <div class="below">
+                <select onchange="checkVal();" id="employment" required>
+                    <option disabled selected value> Select an Option </option>
+                    <option value="1">Employed</option>
+                    <option value="0">Unemployed</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form_question">
+            <div class="above">
+                <label for="employment_sec">Employment Sector</label> 
+            </div>
+            <div class="below">
+                <input type="text" id="employment_sec" required>
+            </div>
+        </div>
+
+        <div class="form_question">  
+            <div class="above">
+                <label for="monthly_gross_income">Monthly Gross Income</label> 
+            </div>  
+            <div class="below">
+                <input type="number" id="monthly_gross_income" required>
+            </div> 
+        </div>
+
+        <div class="form_question">
+            <div class="above">
+                <label for="monthly_housing_payment">Monthly Housing Payment</label>
+            </div>
+            <div class="below">
+                <input type="number" id="monthly_housing_payment" required>    
+            </div>
+        </div>
+
+        <div class="form_question">
+            <div class="above">
+                <label for="bankrupt_foreclosed">Have you ever been bankrupt or foreclosed on?</label> 
+            </div>
+            <div class="below">
+                <select id="bankrupt_foreclosed" required>
+                    <option disabled selected value> Select an Option </option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            
+        </div>
+
+        <div class="form_submit">
+            <input type="submit" id="submitButton" value="Submit">
+        </div>
+        
+    </form>
+</div>
+
+<script>
+    var select = document.getElementById('employment');
+    var employment_sec = document.getElementById('employment_sec')
     
-</form>>
-
-
-
+    function checkVal() {
+        console.log(select.value);
+        if (select.value == 1) {
+            employment_sec.required = true;
+        } else {
+            employment_sec.required = false;
+        }
+    }
+    
+</script>
 </body>
 {% endblock %}

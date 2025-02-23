@@ -53,6 +53,10 @@ def logout():
     session.pop('uid', None)
     return redirect('login')
 
+@app.route('/results', methods = ['GET', 'POST'])
+def results():
+    return render_template('results.html')
+
 @app.context_processor
 def uid():
     if "uid" in session:
