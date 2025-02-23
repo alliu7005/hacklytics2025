@@ -3,13 +3,13 @@
 {% block content %}
 <body>
 <div class = "container">
-    <form method = "POST" action="/results">
+    <form method = "POST" action="results">
         <div class="form_question">
             <div class="above">
                 <label for="loan_amount">Loan Amount</label>
             </div>
             <div class="below">
-                <input type="number" id="loan_amount" required>
+                <input type="number" name="loan_amount" id="loan_amount" required>
             </div>
         </div>
 
@@ -18,7 +18,7 @@
                 <label for="fico">FICO Score</label>
             </div>
             <div class="below">
-                <input type="number" id="fico" required>
+                <input type="number" name="fico" id="fico" required>
             </div>
         </div>
 
@@ -27,11 +27,11 @@
                 <label for="employment">Employment Status</label>
             </div>
             <div class="below">
-                <select onchange="checkVal();" id="employment" required>
+                <select onchange="checkVal();" name="employment" id="employment" required>
                     <option disabled selected value> Select an Option </option>
-                    <option value="2">Employed</option>
-                    <option value="1">Part Time</option>
-                    <option value="0">Unemployed</option>
+                    <option value="1">Full Time</option>
+                    <option value="2">Part Time</option>
+                    <option value="3">Unemployed</option>
                 </select>
             </div>
         </div>
@@ -41,7 +41,7 @@
                 <label for="employment_sec">Employment Sector</label> 
             </div>
             <div class="below">
-                <input type="text" id="employment_sec" required>
+                <input type="text" id="employment_sec" name="employment_sec" required>
             </div>
         </div>
 
@@ -50,7 +50,7 @@
                 <label for="monthly_gross_income">Monthly Gross Income</label> 
             </div>  
             <div class="below">
-                <input type="number" id="monthly_gross_income" required>
+                <input type="number" id="monthly_gross_income" name="monthly_gross_income" required>
             </div> 
         </div>
 
@@ -59,7 +59,7 @@
                 <label for="monthly_housing_payment">Monthly Housing Payment</label>
             </div>
             <div class="below">
-                <input type="number" id="monthly_housing_payment" required>    
+                <input type="number" id="monthly_housing_payment" name="monthly_housing_payment" required>    
             </div>
         </div>
 
@@ -68,7 +68,7 @@
                 <label for="bankrupt_foreclosed">Have you ever been bankrupt or foreclosed on?</label> 
             </div>
             <div class="below">
-                <select id="bankrupt_foreclosed" required>
+                <select id="bankrupt_foreclosed" name="bankrupt_foreclosed" required>
                     <option disabled selected value> Select an Option </option>
                     <option value="1">Yes</option>
                     <option value="0">No</option>

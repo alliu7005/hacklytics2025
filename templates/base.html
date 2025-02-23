@@ -9,14 +9,22 @@
         <nav class="nav">
             {% if uid is not none %}
             <a id="logoutButton" href="#" class="nav_link">Logout</a>
-            <a href="{{ url_for('index')}}" class="nav_link">Home</a>
+            
+                {% if resultsget is not none %}
+                    <a href="{{ url_for('results')}}" class="nav_link">Results</a>
+                    <a href="{{ url_for('index')}}" class="nav_link">Update Data</a>
+                {% else %}
+                    <a href="{{ url_for('index')}}" class="nav_link">Upload Data</a>
+                {% endif %}      
             {% else %}
             <a href="{{ url_for('login')}}" class="nav_link">Login</a>
             {% endif %}
             <a href="{{ url_for('about')}}" class="nav_link">About</a>
+            
         </nav>
         <script type="text/javascript" src="../static/dist/bundle.js"></script>
     </header>
+    
     {% block content %}
     {% endblock %}
 </body>
