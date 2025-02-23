@@ -14,8 +14,6 @@ ref = db.reference()
 
 app = Flask(__name__)
 
-app.secret_key = 'KEY'
-
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 
@@ -64,15 +62,21 @@ def logout():
 @app.route('/results', methods = ['GET', 'POST'])
 def results():
     if request.method == "GET":
-        best_bank = session["results"][0]
-        prob = session["results"][1]
+        if "results" in session:
+            best_bank = session["results"][0]
+            prob = session["results"][1]
+        else:
+            best_bank = ""
+            prob = 0
+        if "uid" not in session:
+            return redirect("login")
     if request.method == "POST":
-        employment_sector = "N/A"
+        employment_sector = 0
         loan_amt = float(request.form.get("loan_amount"))
         fico = float(request.form.get("fico"))
         employment = int(request.form.get("employment"))
         if employment != 3:
-            employment_sector = str(request.form.get("employment_sec"))
+            employment_sector = int(request.form.get("employment_sec"))
         monthly_gross_income = float(request.form.get("monthly_gross_income"))
         monthly_housing_payment = float(request.form.get("monthly_housing_payment"))
         bankrupt_foreclosed = int(request.form.get("bankrupt_foreclosed"))
@@ -82,7 +86,7 @@ def results():
             'housing': monthly_housing_payment,
             'fico': fico
         }
-        best_bank, prob = find_best_bank(user_dict, employment)
+        best_bank, prob = find_best_bank(user_dict, employment, bankrupt_foreclosed, employment_sector)
         uid = session['uid']
         users_ref = ref.child('users')
         employment_statuses = ["Full Time", "Part Time", "Unemployed"]
@@ -93,7 +97,7 @@ def results():
             users_ref.child(uid).update({ "best_bank" : best_bank, "prob" : prob, "loan_amt": loan_amt, "fico": fico, "employment": employment_statuses[employment - 1], "employment_sector": employment_sector, "monthly_gross_income": monthly_gross_income, "monthly_housing_payment": monthly_housing_payment, "bankrupt_foreclosed": bankrupcy_statuses[bankrupt_foreclosed]})
         else:
             users_ref.child(uid).set({ "best_bank" : best_bank, "prob" : prob, "loan_amt": loan_amt, "fico": fico, "employment": employment_statuses[employment - 1], "employment_sector": employment_sector, "monthly_gross_income": monthly_gross_income, "monthly_housing_payment": monthly_housing_payment, "bankrupt_foreclosed": bankrupcy_statuses[bankrupt_foreclosed]})
-    return render_template('results.html', best_bank = best_bank, prob = prob)
+    return render_template('results.html', best_bank = best_bank, prob = '%.3f'%(prob))
 
 @app.context_processor
 def uid():

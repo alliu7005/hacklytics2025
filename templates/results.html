@@ -2,10 +2,18 @@
 
 {% block content %}
 <body>
-    <p>
-        Results:
-        {{ best_bank }}
-        {{ prob }}
-    </p>
+    <div class="container centered-vert">
+        <p class = "bold centered medium white" style="white-space: pre-line">
+            The best bank for you is: {{ best_bank }}.
+            This bank was calculated 
+            with a certainty score of:
+            {{ prob }} out of 1.
+        </p>
+        <div class="form_submit">
+            <button class="button" id="load_application" name="loan_application">Loan Application</button>
+        </div>      
+    </div>
+    
+    
 </body>
 {% endblock %}

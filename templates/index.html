@@ -3,7 +3,11 @@
 {% block content %}
 <body>
 <div class = "container">
-    <form method = "POST" action="results">
+    <p class="bold centered medium white" style="white-space: pre-line">
+        Get matched with a bank by entering 
+        your information below:
+    </p>
+    <form class="form" method = "POST" action="results">
         <div class="form_question">
             <div class="above">
                 <label for="loan_amount">Loan Amount</label>
@@ -41,7 +45,21 @@
                 <label for="employment_sec">Employment Sector</label> 
             </div>
             <div class="below">
-                <input type="text" id="employment_sec" name="employment_sec" required>
+                <select id="employment_sec" name="employment_sec" required>
+                    <option disabled selected value> Select an Option </option>
+                    <option value="1">IT</option>
+                    <option value="2">Communication Services</option>
+                    <option value="3">Consumer Discretionary</option>
+                    <option value="4">Consumer Staples</option>
+                    <option value="5">Energy</option>
+                    <option value="6">Financials</option>
+                    <option value="7">Health Care</option>
+                    <option value="8">Industrials</option>
+                    <option value="9">Materials</option>
+                    <option value="10">Real Estate</option>
+                    <option value="11">Utilities</option>
+                    <option value="12">Other</option>
+                </select>
             </div>
         </div>
 
@@ -70,15 +88,15 @@
             <div class="below">
                 <select id="bankrupt_foreclosed" name="bankrupt_foreclosed" required>
                     <option disabled selected value> Select an Option </option>
-                    <option value="1">Yes</option>
-                    <option value="0">No</option>
+                    <option value="0">Yes</option>
+                    <option value="1">No</option>
                 </select>
             </div>
             
         </div>
 
         <div class="form_submit">
-            <input type="submit" id="submitButton" value="Submit">
+            <input type="submit" class="button" id="submitButton" value="Submit">
         </div>
         
     </form>

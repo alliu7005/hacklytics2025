@@ -4,6 +4,14 @@
 
 body {
     font-family: "Lexend", sans-serif;
+    background-image: url("../background-img.jpeg");
+    background-repeat:no-repeat;
+    background-size:cover;
+    min-height:100vh;
+}
+
+input {
+    border-radius: 15px;
 }
 .nav {
     background-color: #333;
@@ -30,45 +38,49 @@ body {
 }
 
 .form_question {
-    width: 50%;
-    
-    padding: 5px 0 8px 0;
+    width: 60%;
+    left: 20%;
+    padding-top: 5px;
+    padding-bottom: 5px;
     margin-bottom: 8px;
     display: block;
-    border: 1px solid #ccc;
     box-sizing: content-box;
     position:relative;
-    overflow:auto
+    overflow:auto;
+    border-radius: 15px;
+    background-color: darkgreen;
+    color: white;
 }
 
 .form_submit {
     position:relative;
-    width: 50%;
-    left:25%
+    width: 60%;
+    left:20%
 }
 
 .form {
     position:relative;
-    margin-top: 20%;
-    left: 25%;
+    margin-top: 15%;
+    margin-bottom: 15%;
 }
 
 .above {
-    padding: 5px 0 0 10px;
+    padding: 0 0 0 10px;
 }
 
 .below {
     padding: 0 0 0 10px;
 }
 
-button {
-    background-color: #04AA6D;
+.button {
+    background-color:darkgreen;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
     width: 100%;
+    border-radius: 15px;
 }
 
 button:hover {
@@ -79,11 +91,47 @@ button:hover {
     position:absolute;
     top:50%;
     left:50%;
-    background-color: gray;
-    margin: 8px 0;
+    background-color: #333;
+    margin: 0 0;
     transform: translate(-50%, -50%);
-    min-width: 500px;
-    min-height: 500px;
+    min-width: 300px;
+    min-height: 300px;
     width: fit-content;
     height: fit-content;
+    border-radius: 25px;
+}
+
+.bold {
+    font-weight:bold;
+}
+
+.centered {
+    text-align: center;
+}
+
+.large {
+    font-size:larger;
+}
+
+.white {
+    color:white;
+}
+
+.medium {
+    font-size:large;
+}
+
+.centered_vert {
+    display:flex;
+    align-content:center;
+    justify-content:center;
+}
+
+p {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.margintop {
+    margin-top: 10%;
 }
